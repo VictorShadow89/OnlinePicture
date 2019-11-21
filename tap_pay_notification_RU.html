@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+	.noPrint {
+            display: none;
+        }
+
+        /* 应用这个样式的，从那个标签结束开始另算一页，之后在遇到再起一页，以此类推 */
+
+        .page {
+            page-break-after: always;
+        }
+        body {
+            font-family: SimSun;
+        }
+        p {
+            margin: 10px;
+            line-height: 22px;
+        }
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 1px solid rgb(170, 170, 170);
+        }
+        td,
+        th {
+            vertical-align: text-top;
+            padding: 6px 15px 6px 6px;
+            border: 1px solid rgb(170, 170, 170);
+        }
+        no-border {
+            border: 0;
+        }
+        .wrap {
+            font-size: 14px;
+            color: #333;
+        }
+        .fn-pa-10 {
+            padding: 10px
+        }
+        .fn-pt-10 {
+            padding-top: 10px
+        }
+        .fn-pl-10 {
+            padding-left: 10px
+        }
+        .fn-pr-10 {
+            padding-right: 10px
+        }
+        .fn-pb-10 {
+            padding-bottom: 10px;
+        }
+        .fn-ma-10 {
+            margin: 10px;
+        }
+        .fn-mt-10 {
+            margin-top: 10px;
+        }
+        .fn-ml-10 {
+            margin-left: 10px;
+        }
+        .fn-mr-10 {
+            margin-right: 10px;
+        }
+        .fn-mb-10 {
+            margin-bottom: 10px;
+        }
+		
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: bold;
+            line-height: 1.22;
+            color: #000000;
+        }
+        .h1,
+        h1 {
+            font-size: 34px;
+        }
+        .h2,
+        h2 {
+            font-size: 24px;
+        }
+        .h3,
+        h3 {
+            font-size: 18px;
+        }
+        .h4,
+        h4 {
+            font-size: 16px;
+        }
+        .h5,
+        h5 {
+            font-size: 14px;
+        }
+        .strong {
+            font-weight: bold;
+        }
+        .text-align-center {
+            text-align: center;
+        }
+        .text-align-right {
+            text-align: right;
+        }
+        .text-indent-2em {
+            text-indent: 2em;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        .word-break {
+            word-wrap: break-word;
+            word-break: normal;
+        }
+		.fl-30 {
+            
+            width: 30%;
+        }
+        .fr-70 {
+            
+            width: 70%;
+        }
+        .fl-50 {
+            
+            width: 50%;
+        }
+		.text-12 {
+			font-size:12px;
+		}
+		
+		.signkeyword{
+			color:white;
+		}
+    </style>
+</head>
+
+<body>
+    <div class="wrap fn-pa-10">
+        
+        <p>附件一</p>
+        <h3 class="text-align-center">
+            债权转让通知
+        </h3>
+        <p class="text-align-right">
+            编号： ${tapNo}
+        </p>
+        <p>
+            通知日期：以受让人确认受让的日期为准
+        </p>        
+        <p>
+            致<span class="underline">${anchorCompanyName}</span>（应收账款债务人/签发人）：
+        </p>
+        <p class="text-indent-2em">            根据【${fromCompanyName}】与【${toCompanyName}】签订的编号为【${tapNo}】号的《TAP平台TAP转让协议》，【${toCompanyName}】受让了以下TAP及其项下【${fromCompanyName}】对贵司的应收账款债权：
+        </p>
+        <table class="fn-ml-10" style="width:100%;">
+          <tbody>
+                <tr>
+                    <td style="width:20%;">
+                        TAP编号
+                    </td>
+                    <td style="width:80%;">
+                      ${rootTapNo}  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        签发人
+                    </td>
+                    <td>
+                      ${anchorCompanyName}  
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        原始持有人
+                    </td>
+                    <td>
+                        ${supplierCompanyName}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        转让人
+                    </td>
+                    <td>
+                        ${fromCompanyName}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        受让人
+                    </td>
+                    <td>
+                        ${toCompanyName}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        到期日
+                    </td>
+                    <td>
+                       ${termsDate} 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        TAP金额
+                    </td>
+                    <td>
+                        ￥${amount?string(',##0.00')}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="text-indent-2em">
+            我司声明，未经【${toCompanyName}】事先书面同意，我司或任何第三方自《TAP平台TAP转让协议》签订之日起不得从贵司收取TAP项下的任何回款。届时请贵司将 TAP项下已转让的应收账款直接支付至【${toCompanyName}】指定的账户（户名：<span class="underline">${toBankAccountName}</span>，账号：<span class="underline">${toBankAccount}</span>，开户行：<span class="underline">${toBankBranchName}</span>），该账户未经【${toCompanyName}】书面同意不得变更。
+      </p>
+        <p class="text-indent-2em">
+        本通知由【${fromCompanyName}】通过各方同意由TAP平台通过站内信或公告等方式向贵司发送，本通知自送达贵司之日起即对贵司生效，各方无需另行签署本通知。本通知以邮件形式发出的，则以成功传送贵司邮箱之日为有效送达日（传送成功以自动生成的传送确认信息为证）；以平台站内信或平台公告形式发出的，则以发出之日为有效送达日。
+        </p>
+        <p class="text-indent-2em">
+        特此通知！
+        </p>  
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p class="text-align-right">
+            通知人：${fromCompanyName}<span class="signkeyword">firstParty_sig_n</span>
+        </p>
+    </div>
+</body>
+</html>
